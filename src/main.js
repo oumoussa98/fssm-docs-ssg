@@ -2,7 +2,6 @@ import Vuetify from "vuetify";
 import "./assets/style/index.scss";
 import DefaultLayout from "@/layouts/Default.vue";
 import firebase from "firebase/app";
-import "firebase/storage";
 export default function(Vue, { router, appOptions, head, isClient }) {
 	head.link.push({
 		rel: "stylesheet",

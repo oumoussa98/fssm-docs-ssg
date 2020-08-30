@@ -1,4 +1,6 @@
-const firebase = require("firebase/app");
+import * as firebase from "firebase/app";
+import "firebase/storage";
+
 export default {
 	data: {},
 	succeed: {

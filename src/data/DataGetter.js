@@ -1,3 +1,4 @@
+const firebase = require("firebase/app");
 export default {
 	data: {},
 	succeed: {
@@ -44,142 +45,225 @@ export default {
 					switch (folderRef.name) {
 						case smodule:
 							listRef = storageRef.child(folderRef.fullPath);
-							listRef.listAll().then((res) => {
-								res.prefixes.forEach((folderRef) => {
-									switch (folderRef.name) {
-										case "Cours":
-											listRef = storageRef.child(
-												folderRef.fullPath
-											);
-											listRef.listAll().then((res) => {
-												res.items.forEach((itemRef) => {
-													let obj = {};
-													obj.name = itemRef.name;
-													obj.file = itemRef.name.slice(
-														itemRef.name.lastIndexOf(
-															"."
-														) + 1
+							listRef
+								.listAll()
+								.then((res) => {
+									res.prefixes.forEach((folderRef) => {
+										switch (folderRef.name) {
+											case "Cours":
+												listRef = storageRef.child(
+													folderRef.fullPath
+												);
+												listRef
+													.listAll()
+													.then((res) => {
+														res.items.forEach(
+															(itemRef) => {
+																let obj = {};
+																obj.name =
+																	itemRef.name;
+																obj.file = itemRef.name.slice(
+																	itemRef.name.lastIndexOf(
+																		"."
+																	) + 1
+																);
+																storageRef
+																	.child(
+																		itemRef.fullPath
+																	)
+																	.getDownloadURL()
+																	.then(
+																		(
+																			url
+																		) => {
+																			obj.href = url;
+																		}
+																	);
+																vm.data[
+																	key
+																][0].children.push(
+																	obj
+																);
+															}
+														);
+													})
+													.catch((error) =>
+														console.log(error)
 													);
-													storageRef
-														.child(itemRef.fullPath)
-														.getDownloadURL()
-														.then((url) => {
-															obj.href = url;
-														});
-													vm.data[
-														key
-													][0].children.push(obj);
-												});
-											});
-											break;
-										case "Travaux diriges (TD)":
-											listRef = storageRef.child(
-												folderRef.fullPath
-											);
-											listRef.listAll().then((res) => {
-												res.items.forEach((itemRef) => {
-													let obj = {};
-													obj.name = itemRef.name;
-													obj.file = itemRef.name.slice(
-														itemRef.name.lastIndexOf(
-															"."
-														) + 1
+												break;
+											case "Travaux diriges (TD)":
+												listRef = storageRef.child(
+													folderRef.fullPath
+												);
+												listRef
+													.listAll()
+													.then((res) => {
+														res.items.forEach(
+															(itemRef) => {
+																let obj = {};
+																obj.name =
+																	itemRef.name;
+																obj.file = itemRef.name.slice(
+																	itemRef.name.lastIndexOf(
+																		"."
+																	) + 1
+																);
+																storageRef
+																	.child(
+																		itemRef.fullPath
+																	)
+																	.getDownloadURL()
+																	.then(
+																		(
+																			url
+																		) => {
+																			obj.href = url;
+																		}
+																	);
+																vm.data[
+																	key
+																][1].children.push(
+																	obj
+																);
+															}
+														);
+													})
+													.catch((error) =>
+														console.log(error)
 													);
-													storageRef
-														.child(itemRef.fullPath)
-														.getDownloadURL()
-														.then((url) => {
-															obj.href = url;
-														});
-													vm.data[
-														key
-													][1].children.push(obj);
-												});
-											});
-											break;
-										case "Travaux pratiques (TP)":
-											listRef = storageRef.child(
-												folderRef.fullPath
-											);
-											listRef.listAll().then((res) => {
-												res.items.forEach((itemRef) => {
-													let obj = {};
-													obj.name = itemRef.name;
-													obj.file = itemRef.name.slice(
-														itemRef.name.lastIndexOf(
-															"."
-														) + 1
+												break;
+											case "Travaux pratiques (TP)":
+												listRef = storageRef.child(
+													folderRef.fullPath
+												);
+												listRef
+													.listAll()
+													.then((res) => {
+														res.items.forEach(
+															(itemRef) => {
+																let obj = {};
+																obj.name =
+																	itemRef.name;
+																obj.file = itemRef.name.slice(
+																	itemRef.name.lastIndexOf(
+																		"."
+																	) + 1
+																);
+																storageRef
+																	.child(
+																		itemRef.fullPath
+																	)
+																	.getDownloadURL()
+																	.then(
+																		(
+																			url
+																		) => {
+																			obj.href = url;
+																		}
+																	);
+																vm.data[
+																	key
+																][2].children.push(
+																	obj
+																);
+															}
+														);
+													})
+													.catch((error) =>
+														console.log(error)
 													);
-													storageRef
-														.child(itemRef.fullPath)
-														.getDownloadURL()
-														.then((url) => {
-															obj.href = url;
-														});
-													vm.data[
-														key
-													][2].children.push(obj);
-												});
-											});
-											break;
-										case "Controles":
-											listRef = storageRef.child(
-												folderRef.fullPath
-											);
-											listRef.listAll().then((res) => {
-												res.items.forEach((itemRef) => {
-													let obj = {};
-													obj.name = itemRef.name;
-													obj.file = itemRef.name.slice(
-														itemRef.name.lastIndexOf(
-															"."
-														) + 1
+												break;
+											case "Controles":
+												listRef = storageRef.child(
+													folderRef.fullPath
+												);
+												listRef
+													.listAll()
+													.then((res) => {
+														res.items.forEach(
+															(itemRef) => {
+																let obj = {};
+																obj.name =
+																	itemRef.name;
+																obj.file = itemRef.name.slice(
+																	itemRef.name.lastIndexOf(
+																		"."
+																	) + 1
+																);
+																storageRef
+																	.child(
+																		itemRef.fullPath
+																	)
+																	.getDownloadURL()
+																	.then(
+																		(
+																			url
+																		) => {
+																			obj.href = url;
+																		}
+																	);
+																vm.data[
+																	key
+																][3].children.push(
+																	obj
+																);
+															}
+														);
+													})
+													.catch((error) =>
+														console.log(error)
 													);
-													storageRef
-														.child(itemRef.fullPath)
-														.getDownloadURL()
-														.then((url) => {
-															obj.href = url;
-														});
-													vm.data[
-														key
-													][3].children.push(obj);
-												});
-											});
-											break;
-										case "Exercices":
-											listRef = storageRef.child(
-												folderRef.fullPath
-											);
-											listRef.listAll().then((res) => {
-												res.items.forEach((itemRef) => {
-													let obj = {};
-													obj.name = itemRef.name;
-													obj.file = itemRef.name.slice(
-														itemRef.name.lastIndexOf(
-															"."
-														) + 1
+												break;
+											case "Exercices":
+												listRef = storageRef.child(
+													folderRef.fullPath
+												);
+												listRef
+													.listAll()
+													.then((res) => {
+														res.items.forEach(
+															(itemRef) => {
+																let obj = {};
+																obj.name =
+																	itemRef.name;
+																obj.file = itemRef.name.slice(
+																	itemRef.name.lastIndexOf(
+																		"."
+																	) + 1
+																);
+																storageRef
+																	.child(
+																		itemRef.fullPath
+																	)
+																	.getDownloadURL()
+																	.then(
+																		(
+																			url
+																		) => {
+																			obj.href = url;
+																		}
+																	);
+																vm.data[
+																	key
+																][4].children.push(
+																	obj
+																);
+															}
+														);
+													})
+													.catch((error) =>
+														console.log(error)
 													);
-													storageRef
-														.child(itemRef.fullPath)
-														.getDownloadURL()
-														.then((url) => {
-															obj.href = url;
-														});
-													vm.data[
-														key
-													][4].children.push(obj);
-												});
-											});
-									}
-								});
-							});
+										}
+									});
+								})
+								.catch((error) => console.log(error));
 					}
 				});
 			})
 			.catch((error) => {
 				console.log(error);
-				vm.succeed = false;
+				vm.succeed.state = false;
 			});
 	},
 	async getAllData(smodules, path, slugs) {

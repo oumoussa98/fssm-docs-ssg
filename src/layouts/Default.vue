@@ -1,11 +1,11 @@
 <template>
 	<v-app dark>
 		<Header />
-		<v-container class="mt-10">
+		<div class="mt-10" >
 			<transition name="fade">
 				<slot />
 			</transition>
-		</v-container>
+		</div>
 	</v-app>
 </template>
 

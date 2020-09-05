@@ -1,56 +1,94 @@
 <template>
 	<v-card raised class="card pt-6 pb-10">
 		<h2>Licence Fondamental</h2>
-		<form>
-			<v-container class="px-8">
-				<v-select
-					v-model="semestre"
-					:items="lfSemestres"
-					label="Semestre"
-				></v-select>
-				<v-select
-					v-model="filiere"
-					:items="lfFilieres"
-					label="Filieres"
-				></v-select>
-			</v-container>
-
+		<v-container>
+			<v-row>
+				<v-col cols="4" offset="4">
+					<v-btn @click="turnback" text v-if="i" color="blue">
+						<v-icon dark left>mdi-arrow-left</v-icon>
+					</v-btn>
+				</v-col>
+			</v-row>
 			<v-btn
-				fab
-				color="primary"
-				origin="center center"
-				:to="path"
-				:disabled="checkPath()"
+				v-for="(item, i) in items"
+				:key="i"
+				text
+				outlined
+				rounded
+				class="ma-1 pa-6"
+				@click="append(item)"
 			>
-				Go
+				{{ item }}
 			</v-btn>
-		</form>
+		</v-container>
 	</v-card>
 </template>
 
-<script>
+<script defer>
 export default {
 	data: () => ({
-		lfSemestres: ["S1", "S2", "S3", "S4", "S5"],
-		lfFilieres: ["SMP", "SMC"],
+		lfSemestres: ["S1", "S2", "S3", "S4", "S5", "S6"],
+		items: ["S1", "S2", "S3", "S4", "S5", "S6"],
+		lfFilieres: ["SMP", "SMC", "SVI", "STU", "SMI", "SMA"],
+		SMP: [
+			"Energetique",
+			"Physique Moderne",
+			"Electronique",
+			"Physique de la Matiere Condensee",
+			"Automatique",
+		],
+		SMC: [
+			"Metallurgie",
+			"Chimie des Materiaux",
+			"Spectroscopie",
+			"Chimie Biomoleculaire",
+			"Metrologie et Qualite",
+			"Heterocycle et Organometallique-Catalyse",
+		],
 		semestre: "",
 		filiere: "",
+		option: "",
 		path: "",
+		i: 0,
 	}),
 	methods: {
-		checkPath() {
-			if (this.semestre !== "" && this.filiere !== "") {
-				this.path = `licence-fondamental/${this.filiere}/${this.semestre}`;
-				return false;
+		append(item) {
+			if (this.i === 2) {
+				this.option = item.replaceAll(" ", "-");
+				this.$router.push({
+					path: `Licence-Fondamental/${this.filiere}/${
+						this.semestre
+					}/${this.option}`,
+				});
 			}
-			return true;
+			if (this.i === 0) {
+				this.semestre = item;
+				this.items = this.lfFilieres;
+				this.i++;
+			} else if (this.i === 1) {
+				this.filiere = item;
+				if (this.semestre === "S6") {
+					this.items = this[item];
+					this.i++;
+				} else {
+					this.$router.push({
+						path: `Licence-Fondamental/${this.filiere}/${
+							this.semestre
+						}`,
+					});
+				}
+			}
+		},
+		turnback() {
+			if (this.i === 1) {
+				this.items = this.lfSemestres;
+				this.i = 0;
+			}
+			if (this.i === 2) {
+				this.items = this.lfFilieres;
+				this.i--;
+			}
 		},
 	},
 };
 </script>
-
-<style>
-.card {
-	min-height: 57vh !important;
-}
-</style>

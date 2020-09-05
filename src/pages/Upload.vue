@@ -40,7 +40,6 @@
 						:items="lpsemestres"
 						label="Semestre"
 					></v-select>
-					{{ getModules() }}
 					<v-select
 						v-if="
 							level === 'Licence Fondamental' &&
@@ -73,6 +72,10 @@
 							</v-chip>
 						</template>
 					</v-file-input>
+					<span class="pl-8 red--text float-right" v-if="error">
+						It looks like you're trying to upload an invalid file
+						type !!
+					</span>
 
 					<v-btn
 						class="mr-10 mt-10 px-4 py-4"
@@ -121,17 +124,22 @@
 				</form>
 			</v-col>
 		</v-row>
+		{{ getModules() }}
 	</v-container>
 </template>
 
-<script>
+<script defer>
 import json from "@/data/data.json";
+import firebase from "firebase/app";
+import "firebase/storage";
+
 export default {
 	metaInfo: () => ({
 		title: "Files Upload",
 		meta: [{ name: "description", content: "uploading your files" }],
 	}),
 	data: () => ({
+		// v-select data
 		types: json.types,
 		levels: json.levels,
 		lpFilieres: json.lpFilieres,
@@ -139,21 +147,27 @@ export default {
 		lpsemestres: json.lpsemestres,
 		lfFilieres: json.lfFilieres,
 		s6Options: [],
+		lfModules: [],
 		// models
 		files: [],
 		level: "",
 		semestre: "",
 		option: "",
-		lfModules: [],
 		filiere: "",
 		Smodule: "",
 		lpFiliere: "",
 		uploadProgress: null,
 		dialog: false,
+		error: false,
 		type: "",
 	}),
 	methods: {
 		uploadFile() {
+			if (!this.validate()) {
+				throw new Error(
+					"Invalid File, you can not upload this kind of files"
+				);
+			}
 			let vm = this;
 			let uploadTask;
 			vm.files.forEach((file) => {
@@ -161,8 +175,8 @@ export default {
 					.storage()
 					.ref(
 						`${this.level}/${this.semestre}/${this.filiere}/${
-							this.Smodule
-						}/${this.type}/${file.name}`
+							this.option
+						}/${this.Smodule}/${this.type}/${file.name}`
 					)
 					.put(file);
 			});
@@ -172,150 +186,92 @@ export default {
 					(snapshot.bytesTransferred / snapshot.totalBytes) * 100
 				);
 				if (vm.uploadProgress === 100) {
-					vm.dialog = true;
 					vm.files = [];
 				}
 			});
 		},
-		getModules() {
-			if (this.level === "Licence Fondamental")
-				switch (this.filiere) {
-					// SMP
-					case "SMP":
-						switch (this.semestre) {
-							case "S1":
-								this.lfModules = json.lfmodules.SMP.S1;
-								break;
-							case "S2":
-								this.lfModules = json.lfmodules.SMP.S2;
-								break;
-							case "S3":
-								this.lfModules = json.lfmodules.SMP.S3;
-								break;
-							case "S4":
-								this.lfModules = json.lfmodules.SMP.S4;
-								break;
-							case "S5":
-								this.lfModules = json.lfmodules.SMP.S5;
-								break;
-							case "S6":
-								this.s6Options = json.lfmodules.SMP.S6.options;
-								switch (this.option) {
-									case "Energetique":
-										this.lfModules =
-											json.lfmodules.SMP.S6.Energetique;
-										break;
-									case "Physique Moderne":
-										this.lfModules =
-											json.lfmodules.SMP.S6.PhysiqueModerne;
-										break;
-									case "Electronique":
-										this.lfModules =
-											json.lfmodules.SMP.S6.Electronique;
-										break;
-									case "PhysiquedelaMatiere Condensee":
-										this.lfModules =
-											json.lfmodules.SMP.S6.PhysiquedelaMatiereCondensee;
-										break;
-									case "Automatique":
-										this.lfModules =
-											json.lfmodules.SMP.S6.Automatique;
-										break;
-								}
-						}
-						break;
-					// SMC
-					case "SMC":
-						switch (this.semestre) {
-							case "S1":
-								this.lfModules = json.lfmodules.SMC.S1;
-								break;
-							case "S2":
-								this.lfModules = json.lfmodules.SMC.S2;
-								break;
-							case "S3":
-								this.lfModules = json.lfmodules.SMC.S3;
-								break;
-							case "S4":
-								this.lfModules = json.lfmodules.SMC.S4;
-								break;
-							case "S5":
-								this.lfModules = json.lfmodules.SMC.S5;
-								break;
-							case "S6":
-								this.s6Options = json.lfmodules.SMC.S6.options;
-								switch (this.option) {
-									case "Metallurgie":
-										this.lfModules =
-											json.lfmodules.SMC.S6.Metallurgie;
-										break;
-									case "Chimie des Materiaux":
-										this.lfModules =
-											json.lfmodules.SMC.S6.ChimiedesMateriaux;
-										break;
-									case "Spectroscopie":
-										this.lfModules =
-											json.lfmodules.SMC.S6.Spectroscopie;
-										break;
-									case "Chimie Biomoleculaire":
-										this.lfModules =
-											json.lfmodules.SMC.S6.ChimieBiomoleculaire;
-										break;
-									case "Metrologie et Qualite":
-										this.lfModules =
-											json.lfmodules.SMC.S6.MetrologieetQualite;
-										break;
-									case "Heterocycle et Organometallique-Catalyse":
-										this.lfModules =
-											json.lfmodules.SMC.S6.HeterocycleetOrganometalliqueCatalyse;
-										break;
-								}
-						}
-						break;
-					// SVT
-					case "SVT":
-						switch (this.semestre) {
-							case "S1":
-								this.lfModules = json.lfmodules.SVT.S1;
-								break;
-							case "S2":
-								this.lfModules = json.lfmodules.SVT.S2;
-								break;
-							case "S3":
-								this.lfModules = json.lfmodules.SVT.S3;
-								break;
-							case "S4":
-								this.lfModules = json.lfmodules.SVT.S4;
-								break;
-							case "S5":
-								this.lfModules = json.lfmodules.SVT.S5;
-								break;
-						}
-						break;
-					// SMI
-					case "SMI":
-						switch (this.semestre) {
-							case "S1":
-								this.lfModules = json.lfmodules.SMI.S1;
-								break;
-							case "S2":
-								this.lfModules = json.lfmodules.SMI.S2;
-								break;
-							case "S3":
-								this.lfModules = json.lfmodules.SMI.S3;
-								break;
-							case "S4":
-								this.lfModules = json.lfmodules.SMI.S4;
-								break;
-							case "S5":
-								this.lfModules = json.lfmodules.SMI.S5;
-								break;
-							case "S6":
-								this.lfModules = json.lfmodules.SMI.S6;
-								break;
-						}
+		validate() {
+			if (
+				this.level === "" ||
+				this.filiere === "" ||
+				this.semestre === "" ||
+				this.Smodule === "" ||
+				this.type === ""
+			) {
+				return false;
+			}
+			for (let i = 0; i < this.files.length; i++) {
+				if (
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "pdf" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "txt" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "xls" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "docx" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "jpg" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "jpeg" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "png" ||
+					this.files[i].name.slice(
+						this.files[i].name.lastIndexOf(".") + 1
+					) === "html"
+				) {
+					return true;
+				} else {
+					this.error = true;
+					return false;
 				}
+			}
+		},
+		getModules() {
+			// licence fondamental
+			if (
+				this.level === "Licence Fondamental" &&
+				this.filiere !== "" &&
+				this.semestre !== ""
+			) {
+				switch (this.semestre) {
+					case "S6":
+						this.s6Options =
+							json.lfmodules[this.filiere][this.semestre][
+								"options"
+							];
+						if (this.option) {
+							this.lfModules =
+								json.lfmodules[this.filiere][this.semestre][
+									this.option
+								];
+						}
+						break;
+					case "S1":
+					case "S2":
+					case "S3":
+					case "S4":
+					case "S5":
+						this.lfModules =
+							json.lfmodules[this.filiere][this.semestre];
+						break;
+					default:
+						throw new TypeError("Invalid semestre");
+				}
+			}
 		},
 	},
 };
 </script>
+<style>
+span {
+	display: block;
+}
+</style>

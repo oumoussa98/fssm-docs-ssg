@@ -1,81 +1,130 @@
 <template>
-	<v-container class="mt-6 d-flex justify-center" fluid>
+	<v-container class="mt-10 d-flex justify-center" fluid>
 		<v-card raised>
-			<v-tabs v-model="tab" show-arrows height="70px">
-				<v-tabs-slider color="teal lighten-3"></v-tabs-slider>
-				<v-tab v-for="(smodule, i) in smodules" :key="i">
-					{{ smodule }}
-				</v-tab>
-			</v-tabs>
-			<v-tabs-items v-model="tab">
-				<v-tab-item v-for="(dta, i) in data" :key="i">
-					<v-card flat>
-						<span class="progress" v-show="!succeed.state">
-							<v-progress-circular
-								indeterminate
-								color="primary"
-							></v-progress-circular>
-						</span>
-
-						<v-treeview
-							v-show="succeed.state"
-							v-model="tree"
-							:open="open"
-							:items="dta"
-							activatable
-							item-key="name"
-							open-on-click
-						>
-							<template v-slot:prepend="{ item, open }">
-								<v-icon
-									color="#fcad03"
-									v-if="!item.file && !isEmpty(item)"
+			<v-tabs
+				v-model="active_tab"
+				color="blue darken-1"
+				center-active
+				:background-color="bgColor()"
+				:vertical="screenWidth < 1100 && screenWidth >= 780"
+				:show-arrows="screenWidth >= 1100"
+			>
+				<v-tabs-slider v-if="screenWidth < 780" :color="bgColor()">
+				</v-tabs-slider>
+				<!------------------ for small devices ------------------------>
+				<div class="text-center">
+					<v-menu
+						v-if="screenWidth < 780"
+						bottom
+						offset-y
+						class="text-no-wrap"
+						transition="slide-y-transition"
+					>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn
+								class="tab-button"
+								text
+								v-bind="attrs"
+								v-on="on"
+							>
+								<span>
+									{{ currentModule }}
+								</span>
+								<v-icon right>mdi-menu-down</v-icon>
+							</v-btn>
+						</template>
+						<v-list>
+							<v-list-item
+								v-for="(smodule, i) in smodules"
+								:key="i"
+							>
+								<v-tab
+									class="tab-item"
+									@click="changeCurrentModule(smodule)"
 								>
-									{{
-										open ? "mdi-folder-open" : "mdi-folder"
-									}}
+									{{ smodule }}
+								</v-tab>
+							</v-list-item>
+						</v-list>
+					</v-menu>
+				</div>
+				<!------------------ for medium and large devices ------------------------>
+				<template v-if="screenWidth >= 780">
+					<v-tab
+						class="py-6 pa-8"
+						v-for="(smodule, i) in smodules"
+						:key="i"
+					>
+						{{ smodule }}
+					</v-tab>
+				</template>
+
+				<v-tab-item
+					:style="inlineStyle()"
+					class="ml-1"
+					v-for="(dta, i) in data"
+					:key="i"
+				>
+					<span class="progress" v-show="!succeed.state">
+						<v-progress-circular
+							indeterminate
+							color="primary"
+						></v-progress-circular>
+					</span>
+
+					<v-treeview
+						class="pt-4 text-no-wrap"
+						v-show="succeed.state"
+						v-model="tree"
+						:open="open"
+						:items="dta"
+						activatable
+						item-key="name"
+						open-on-click
+					>
+						<template
+							class="text-no-wrap"
+							v-slot:prepend="{ item, open }"
+						>
+							<v-icon
+								color="#fcad03"
+								v-if="!item.file && !isEmpty(item)"
+							>
+								{{ open ? "mdi-folder-open" : "mdi-folder" }}
+							</v-icon>
+							<img
+								v-if="isEmpty(item)"
+								width="25"
+								src="@/assets/images/empty-folder.svg"
+							/>
+							<v-btn
+								fab
+								small
+								dark
+								text
+								color="success"
+								v-if="item.file"
+								@click="download(item.href)"
+								class="px-0 mx-0"
+							>
+								<v-icon>
+									mdi-download
 								</v-icon>
-								<img
-									v-if="isEmpty(item)"
-									width="25"
-									src="@/assets/images/empty-folder.svg"
-								/>
-								<v-tooltip bottom>
-									<template v-slot:activator="{ on, attrs }">
-										<v-btn
-											fab
-											small
-											dark
-											text
-											color="success"
-											v-if="item.file"
-											@click="download(item.href)"
-											v-bind="attrs"
-											v-on="on"
-											class="px-0 mx-0"
-										>
-											<v-icon>
-												mdi-download
-											</v-icon>
-										</v-btn>
-									</template>
-									<span>Download</span>
-								</v-tooltip>
-								<v-btn fab small text v-if="item.file">
-									<v-icon>
-										{{ files[item.file] }}
-									</v-icon>
-								</v-btn>
-							</template>
-						</v-treeview>
-					</v-card>
+							</v-btn>
+							<v-btn fab small text v-if="item.file">
+								<v-icon>
+									{{ files[item.file] }}
+								</v-icon>
+							</v-btn>
+						</template>
+					</v-treeview>
 				</v-tab-item>
-			</v-tabs-items>
+			</v-tabs>
 		</v-card>
 	</v-container>
 </template>
 
-<script>
+<script defer>
 import dataGetter from "@/data/DataGetter.js";
 export default {
 	// props =================
@@ -85,27 +134,49 @@ export default {
 		path: String,
 	},
 	// Data =================
-	data: () => ({
-		tab: null,
-		succeed: null,
-		// treeview
-		open: ["public"],
-		files: {
-			pdf: "mdi-file-pdf",
-			txt: "mdi-file-document-outline",
-			xls: "mdi-file-excel",
-			docx: "mdi-file-word",
-			jpg: "mdi-file-image",
-			jpeg: "mdi-file-image",
-			png: "mdi-file-image",
-			html: "mdi-language-html5",
-		},
-		tree: [],
-		data: {},
-	}),
+	data: function() {
+		return {
+			succeed: null,
+			mobileView: false,
+			dialog: false,
+			currentModule: this.smodules[0],
+			screenWidth: null,
+			active_tab: 0,
 
+			// treeview
+			open: ["public"],
+			files: {
+				pdf: "mdi-file-pdf",
+				txt: "mdi-file-document-outline",
+				xls: "mdi-file-excel",
+				docx: "mdi-file-word",
+				jpg: "mdi-file-image",
+				jpeg: "mdi-file-image",
+				png: "mdi-file-image",
+				html: "mdi-language-html5",
+			},
+			tree: [],
+			data: {},
+		};
+	},
 	// methods ===============
 	methods: {
+		inlineStyle() {
+			if (this.screenWidth < 700) {
+				return "width:auto; overflow-x: auto; white-space: nowrap;";
+			}
+			return false;
+		},
+		changeCurrentModule(smodule) {
+			this.currentModule = smodule;
+			this.active_tab = null;
+		},
+		bgColor() {
+			if (this.$vuetify.theme.dark) {
+				return "black";
+			}
+			return "grey lighten-4";
+		},
 		isEmpty: (item) => {
 			if (!item.file && item.children.length === 0) return true;
 			return false;
@@ -159,6 +230,12 @@ export default {
 		this.data = dataGetter.data;
 		this.succeed = dataGetter.succeed;
 	},
+	mounted() {
+		this.screenWidth = window.innerWidth;
+		window.addEventListener("resize", () => {
+			this.screenWidth = window.innerWidth;
+		});
+	},
 };
 </script>
 <style>
@@ -167,5 +244,31 @@ export default {
 	justify-content: center;
 	align-items: center;
 	padding: 30px;
+}
+.v-window {
+	overflow-x: auto;
+}
+.v-treeview {
+	min-width: 40em;
+}
+.v-tab {
+	white-space: initial;
+}
+@media only screen and (max-width: 445px) {
+	.tab-button {
+		font-size: 10px;
+	}
+}
+@media only screen and (max-width: 780px) {
+	.tab-button {
+		width: 60vw;
+		margin: 2% 0 0 20%;
+		border-bottom: 1px solid #0077ff;
+	}
+	.tab-item {
+		width: 100%;
+		padding: 15px 20px;
+		margin: auto;
+	}
 }
 </style>

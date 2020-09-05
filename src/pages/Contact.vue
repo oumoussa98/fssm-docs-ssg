@@ -1,5 +1,5 @@
 <template>
-	<v-container class="mt-4">
+	<v-container class="mt-10">
 		<v-form
 			netlify
 			name="contact"
@@ -42,7 +42,7 @@
 				name="phone"
 				v-model="formData.phone"
 				filled
-				label="Phone number"
+				label="Phone number (Optional)"
 				prepend-inner-icon="mdi-phone"
 			></v-text-field>
 			<v-textarea
@@ -64,10 +64,6 @@
 				type="submit"
 			>
 				Send
-			</v-btn>
-
-			<v-btn color="error" class="mr-4" @click="reset">
-				Reset Form
 			</v-btn>
 		</v-form>
 		<v-dialog v-if="successMessage" v-model="dialog" max-width="500px">
@@ -102,7 +98,7 @@
 	</v-container>
 </template>
 
-<script>
+<script defer>
 export default {
 	metaInfo: () => ({
 		title: "Contact",
@@ -132,9 +128,6 @@ export default {
 		validate() {
 			this.$refs.form.validate();
 			this.dialog = true;
-		},
-		reset() {
-			this.$refs.form.reset();
 		},
 		Submited() {
 			Object.keys(this.formData).forEach((k) => delete this.formData[k]);

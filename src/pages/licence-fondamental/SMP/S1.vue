@@ -1,10 +1,6 @@
 <template>
-  <div>
-  <p>
-   smodules: {{smodules}} <br/>
-   slugs: {{slugs}} <br/>
-  </p>
-  </div>
+	<ContentDisplayer :smodules="smodules" :slugs="slugs" :path="path">
+	</ContentDisplayer>
 </template>
 
 <script defer>

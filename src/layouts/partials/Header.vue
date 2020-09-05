@@ -2,9 +2,10 @@
 	<div class="header">
 		<v-app-bar app>
 			<!--------------- Brand area --------------->
-			<div class="d-flex align-center">
+			<div class="d-flex">
 				<g-link to="/">
 					<g-image
+						class="logo"
 						alt="FSSM Logo"
 						src="@/assets/images/fssm.png"
 						transition="scale-transition"
@@ -14,7 +15,13 @@
 			</div>
 			<v-spacer></v-spacer>
 			<div class="my-2">
-				<v-btn depressed color="light-blue accent-4" dark to="/upload">
+				<v-btn
+					class="upload-btn"
+					depressed
+					color="light-blue accent-4"
+					dark
+					to="/upload"
+				>
 					Upload Files
 				</v-btn>
 			</div>
@@ -68,7 +75,7 @@
 		</v-navigation-drawer>
 	</div>
 </template>
-<script>
+<script defer>
 import DarkLight from "@/components/DarkLight";
 export default {
 	components: {
@@ -87,3 +94,14 @@ export default {
 	}),
 };
 </script>
+<style>
+@media only screen and (max-width: 450px) {
+	.logo {
+		width: 70px;
+	}
+	.upload-btn {
+		font-size: 12px !important;
+		width: 85%;
+	}
+}
+</style>

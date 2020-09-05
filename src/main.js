@@ -12,6 +12,12 @@ export default function(Vue, { router, appOptions, head, isClient }) {
 		href:
 			"https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
 	});
+	// Add a meta tag
+	head.meta.push({
+		name: "keywords",
+		content:
+			"Licence Fondamental, FSSM, SMPC, SMP, SMC, SVTU, SVI, STU, SMIA, SMI, SMA, Biologie, Chimie, Geologie, Informatique, Physique, Mathématiques, Faculte, Sciences, Semlalia",
+	});
 	const opts = {
 		theme: {
 			dark: false,

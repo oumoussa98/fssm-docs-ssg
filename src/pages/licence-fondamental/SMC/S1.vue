@@ -1,9 +1,9 @@
 <template>
-	<S1 />
+	<ContentDisplayer :smodules="smodules" :slugs="slugs" :path="path">
+	</ContentDisplayer>
 </template>
+
 <script defer>
-// to update this component update the component in this path  src/components/licence-fondamental/SMP/S1
-import S1 from "@/pages/licence-fondamental/SMP/S1";
 export default {
 	metaInfo: () => ({
 		title: "Licence Fondamental SMC-S1",
@@ -14,8 +14,27 @@ export default {
 			},
 		],
 	}),
-	components: {
-		S1,
-	},
+	// Data =================
+	data: () => ({
+		smodules: [
+			"Mecanique du point",
+			"Thermodynamique 1",
+			"Atomistique",
+			"Thermochimie",
+			"Analyse 1",
+			"Algebre 1",
+			"Langue & terminologie 1",
+		],
+		slugs: [
+			"mecanique_du_point",
+			"thermodynamique",
+			"atomistique",
+			"thermochimie",
+			"analyse",
+			"algebre",
+			"langue_terminologie",
+		],
+		path: "/Licence Fondamental/S1/SMP/",
+	}),
 };
 </script>

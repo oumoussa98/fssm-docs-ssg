@@ -1,7 +1,7 @@
 <template>
-	<v-container class="mt-6">
+	<v-container class="mt-10">
 		<h1 class="ml-4">About FSSM Documents</h1>
-		<v-col cols="8">
+		<v-col cols="10" ofsset-y>
 			<p>
 				This website is made for FSSM (Faculté des Sciences Semlalia
 				Marrakech) students so that they have access to the courses and

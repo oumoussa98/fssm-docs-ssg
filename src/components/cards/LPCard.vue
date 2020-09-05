@@ -11,7 +11,7 @@
 			<v-icon dark left>mdi-arrow-left</v-icon>
 		</v-btn> -->
 
-		<div class="px-10 pt-10">
+		<div class="px-2 pt-10">
 			<v-row>
 				<v-col><p class="red--text text-center">Coming soon</p></v-col>
 			</v-row>
@@ -33,7 +33,7 @@
 	</v-card>
 </template>
 
-<script>
+<script defer>
 export default {
 	data: () => ({
 		items: [

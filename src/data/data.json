@@ -6,15 +6,10 @@
 		"Controles",
 		"Exercices"
 	],
-	"levels": [
-		"Licence Fondamental",
-		"Licence Professionelle",
-		"Master",
-		"Doctorat"
-	],
+	"levels": ["Licence Fondamental", "Licence Professionelle"],
 	"lfsemestres": ["S1", "S2", "S3", "S4", "S5", "S6"],
 	"lpsemestres": ["S3", "S4", "S5", "S6"],
-	"lfFilieres": ["SMP", "SMC", "SVT", "SVU", "SMI", "SMA"],
+	"lfFilieres": ["SMP", "SMC", "SVI", "STU", "SMI", "SMA"],
 	"lpFilieres": [
 		"LP-OO",
 		"LP-3ER",
@@ -84,40 +79,31 @@
 					"Mecanique de Fluide",
 					"Mecanique des milieux continus",
 					"Transferts Thermiques",
-					"Methodes Numerique",
-					"Projet tutore",
-					"Projet tutore"
+					"Methodes Numerique"
 				],
 				"PhysiqueModerne": [
 					"Physique quantique relativiste",
 					"Relativite et formalisme tensoriel",
 					"Optique Avancee",
-					"Physique computationnelle",
-					"Projet tutore",
-					"Projet tutore"
+					"Physique computationnelle"
 				],
 				"Electronique": [
 					"Systeme numerique",
 					"electronique non lineaire et instrumentation",
 					"Telecommunications",
-					"Automatique",
-					"Projet tutore"
+					"Automatique"
 				],
 				"PhysiquedelaMatiereCondensee": [
 					"Physique statistique II",
 					"Physique atomique",
 					"Physique du solide",
-					"Metrologie et Capteurs",
-					"Projet tutore",
-					"Projet tutore"
+					"Metrologie et Capteurs"
 				],
 				"Automatique": [
 					"Asservissement",
 					"Automatismes et capteurs",
 					"traitement du signal",
-					"Syntheses des correcteur/Logique floue",
-					"Projet tutore",
-					"Projet tutore"
+					"Syntheses des correcteur/Logique floue"
 				]
 			}
 		},
@@ -174,63 +160,52 @@
 					"Heterocycle et Organometallique-Catalyse"
 				],
 				"Metallurgie": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Metallurgie Extractive",
 					"Electrochimie appliquee"
 				],
 				"ChimiedesMateriaux": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Chimie de solide",
 					"Proprietes optiques et magnetiques"
 				],
 				"Spectroscopie": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Determination structurale et stereochimique par RMN multinoyaux et Multiimpulsionnelle",
-					"Methodes d’analyse et de caracterisation - Analyse de surface"
+					"Methodes d'analyse et de caracterisation - Analyse de surface"
 				],
 				"ChimieBiomoleculaire": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Gestion de la  qualite et accreditation",
 					"Metrologie"
 				],
 				"MetrologieetQualite": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
-					"Chimie des biomolecules d’origine veget"
+					"Chimie des biomolecules d'origine vegetale",
+					"Chimie des biomolecules de synthese"
 				],
 
 				"HeterocycleetOrganometalliqueCatalyse": [
-					"PFE : Modelisation",
-					"PFE : Stage",
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
-					"Chimie des biomolecules d’origine vegetale",
-					"Chimie des biomolecules de synthèse"
+					"Chimie organique heterocyclique",
+					"Chimie organométallique et catalyse"
 				]
 			}
 		},
-		"SVT": {
+		"SVI": {
 			"S1": [
 				"Biologie Cellulaire",
 				"Embryologie et Histologie",
 				"Geologie generale",
 				"Mathematiques",
-				"Physique I: Optique-Physique nucleaire Thermodynamique",
-				"Chimie I: Chimie Generale",
+				"Physique I",
+				"Chimie Generale I",
 				"Langue et Terminologie I"
 			],
 			"S2": [
@@ -238,8 +213,8 @@
 				"Biologie des organismes vegetaux",
 				"Geodynamique externe",
 				"Geodynamique interne",
-				"Physique II: Mecanique - Electricite",
-				"Chimie II: Chimie Organique",
+				"Physique II",
+				"Chimie Organique II",
 				"Langue et Terminologie II"
 			],
 			"S3": [
@@ -267,6 +242,50 @@
 				"Biologie moleculaire"
 			]
 		},
+		"STU": {
+			"S1": [
+				"Biologie Cellulaire",
+				"Embryologie et Histologie",
+				"Geologie generale",
+				"Mathematiques",
+				"Physique I",
+				"Chimie Generale I",
+				"Langue et Terminologie I"
+			],
+			"S2": [
+				"Biologie des organismes animaux",
+				"Biologie des organismes vegetaux",
+				"Geodynamique externe",
+				"Geodynamique interne",
+				"Physique II",
+				"Chimie Organique II",
+				"Langue et Terminologie II"
+			],
+			"S3": [
+				"Tectonique analytique",
+				"Tectonique globale",
+				"Petrologie magmatique",
+				"Petrologie metamorphique",
+				"Physique appliquee aux Sciences de la Terre",
+				"Statistiques"
+			],
+			"S4": [
+				"Petrographie sedimentaire",
+				"Sedimentologie",
+				"Paleontologie",
+				"Stratigraphie",
+				"Geoinformatique",
+				"Chimie appliquee aux Sciences de la Terre"
+			],
+			"S5": [
+				"Geologie du Maroc I",
+				"Geologie du Maroc II",
+				"Metallogenie",
+				"Hydrogeologie",
+				"Geophysique",
+				"Geochimie"
+			]
+		},
 
 		"SMI": {
 			"S1": [
@@ -291,33 +310,69 @@
 				"electronique",
 				"Technologie du web",
 				"Probabilites- Statistique",
-				"Systeme d’exploitation 1",
+				"Systeme d'exploitation 1",
 				"Algorithmique 2",
 				"Programmation 1"
 			],
 			"S4": [
-				"electromagnetisme",
+				"Electromagnetisme",
 				"Architecture des ordinateurs",
 				"Analyse Numerique",
-				"Systeme d’exploitation2",
+				"Systeme d'exploitation 2",
 				"Structures de donnees",
-				"Programmation2"
+				"Programmation 2"
 			],
 			"S5": [
 				"Programmation orientee Java",
-				"Systeme d’information",
+				"Systeme d'information",
 				"Compilation",
 				"Base de donnees",
 				"Recherche operationnelle",
 				"Reseaux"
+			]
+		},
+		"SMA": {
+			"S1": [
+				"Analyse 1",
+				"Algebre 1",
+				"Algebre 2",
+				"Physique 1",
+				"Physique 2",
+				"Informatique 1",
+				"Langue & terminologie 1"
 			],
-			"S6": [
-				"Projet Tutore 2",
-				"Projet Tutore 1",
-				"Base de donnees 2",
-				"Programmation Web",
-				"Conception Orientee (UML)",
-				"Intelligence Artificielle"
+			"S2": [
+				"Analyse 2",
+				"Analyse 3",
+				"Algebre 3",
+				"Physique 3",
+				"Physique 4",
+				"Informatique 2",
+				"Langue & terminologie 2"
+			],
+			"S3": [
+				"Analyse 4",
+				"Analyse 5",
+				"Algebre 4",
+				"Probabilites Statistiques",
+				"Physique 5",
+				"Informatique 3"
+			],
+			"S4": [
+				"Analyse 6",
+				"Algebre 5",
+				"Algebre 6",
+				"Analyse Numerique 1",
+				"Physique 6",
+				"Informatique 4"
+			],
+			"S5": [
+				"Topologie",
+				"Integration",
+				"Calcul differentiel",
+				"Programmation Mathematique",
+				"Analyse numerique 2",
+				"Informatique 5"
 			]
 		}
 	}

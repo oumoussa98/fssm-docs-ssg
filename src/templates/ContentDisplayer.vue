@@ -1,5 +1,8 @@
 <template>
-	<v-container class="mt-10 d-flex justify-center" fluid>
+	<v-container
+		:class="{ 'd-flex justify-center': succeed.state, 'mt-10': true }"
+		fluid
+	>
 		<v-card raised>
 			<v-tabs
 				v-model="active_tab"
@@ -257,11 +260,14 @@ export default {
 @media only screen and (max-width: 445px) {
 	.tab-button {
 		font-size: 10px;
+		font-size: 10px !important;
 	}
 }
 @media only screen and (max-width: 780px) {
 	.tab-button {
-		width: 60vw;
+		display: block;
+		white-space: initial;
+		width: 66vw;
 		margin: 2% 0 0 20%;
 		border-bottom: 1px solid #0077ff;
 	}

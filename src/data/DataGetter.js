@@ -1,11 +1,5 @@
 import * as firebase from "firebase/app";
 import "firebase/storage";
-firebase.initializeApp({
-	apiKey: "AIzaSyBpjbXVMUKHx77navIKO8IChlql94oFJmQ",
-	authDomain: "fssm-fb8e7.firebaseapp.com",
-	projectId: "fssm-fb8e7",
-	storageBucket: "fssm-fb8e7.appspot.com",
-});
 export default {
 	data: {},
 	succeed: {

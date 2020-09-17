@@ -229,11 +229,11 @@ export default {
 	// lifecycle hooks ============
 
 	created() {
-		dataGetter.getAllData(this.smodules, this.path, this.slugs);
-		this.data = dataGetter.data;
 		this.succeed = dataGetter.succeed;
 	},
 	mounted() {
+		dataGetter.getAllData(this.smodules, this.path, this.slugs);
+		this.data = dataGetter.data;
 		this.screenWidth = window.innerWidth;
 		window.addEventListener("resize", () => {
 			this.screenWidth = window.innerWidth;

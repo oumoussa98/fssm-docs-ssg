@@ -1,7 +1,6 @@
 import Vuetify from "vuetify";
 import "./assets/style/index.scss";
 import DefaultLayout from "@/layouts/Default.vue";
-import firebase from "firebase/app";
 export default function(Vue, { router, appOptions, head, isClient }) {
 	head.link.push({
 		rel: "stylesheet",
@@ -33,9 +32,3 @@ export default function(Vue, { router, appOptions, head, isClient }) {
 	);
 	Vue.component("Layout", DefaultLayout);
 }
-firebase.initializeApp({
-	apiKey: "AIzaSyBpjbXVMUKHx77navIKO8IChlql94oFJmQ",
-	authDomain: "fssm-fb8e7.firebaseapp.com",
-	projectId: "fssm-fb8e7",
-	storageBucket: "fssm-fb8e7.appspot.com",
-});

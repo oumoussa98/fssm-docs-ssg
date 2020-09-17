@@ -45,6 +45,14 @@ export default {
 			"Metrologie et Qualite",
 			"Heterocycle et Organometallique-Catalyse",
 		],
+		SVI: [
+			"Biologie Appliquee Aux Production Vegetales",
+			"Physiologie Animal",
+			"Biologie Appliquee a la Gestion de Environnement",
+			"Biologie de Conservation",
+			"Eco-sante et Environnement",
+		],
+		STU: ["Bassins Sedimentaire et Georessources", "Geologie Appliquee"],
 		semestre: "",
 		filiere: "",
 		option: "",
@@ -67,7 +75,11 @@ export default {
 				this.i++;
 			} else if (this.i === 1) {
 				this.filiere = item;
-				if (this.semestre === "S6") {
+				if (
+					this.semestre === "S6" &&
+					this.filiere !== "SMI" &&
+					this.filiere !== "SMA"
+				) {
 					this.items = this[item];
 					this.i++;
 				} else {

@@ -6,12 +6,12 @@
 <script defer>
 export default {
 	metaInfo: () => ({
-		title: "Licence Fondamental SMP-S6",
+		title: "Licence Fondamental SMP-S6-Physique-de-la-Matiere-Condensee",
 		meta: [
 			{
 				name: "description",
 				content:
-					"Licence Fondamental SMP-S6-PhysiquedelaMatiereCondensee courses",
+					"Licence Fondamental SMP-S6-Physique-de-la-Matiere-Condensee courses",
 			},
 		],
 	}),

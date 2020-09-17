@@ -6,7 +6,7 @@
 <script defer>
 export default {
 	metaInfo: () => ({
-		title: "Licence Fondamental SMP-S6",
+		title: "Licence Fondamental SMP-S6-Energetique",
 		meta: [
 			{
 				name: "description",

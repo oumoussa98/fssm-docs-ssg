@@ -6,3 +6,8 @@ node_modules
 dist
 .env
 .env.*
+.gitignore
+
+# Local Netlify folder
+.netlify
+functions

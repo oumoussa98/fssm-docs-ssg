@@ -148,7 +148,7 @@
 				"Cinetique et catalyse",
 				"Chimie theorique",
 				"electrochimie",
-				"Techniques spectroscopiques d’analyse"
+				"Techniques spectroscopiques d'analyse"
 			],
 			"S6": {
 				"options": [
@@ -175,7 +175,7 @@
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Determination structurale et stereochimique par RMN multinoyaux et Multiimpulsionnelle",
-					"Methodes d'analyse et de caracterisation - Analyse de surface"
+					"Methodes danalyse et de caracterisation - Analyse de surface"
 				],
 				"ChimieBiomoleculaire": [
 					"Les grandes classes des reactions organiques",
@@ -186,7 +186,7 @@
 				"MetrologieetQualite": [
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
-					"Chimie des biomolecules d'origine vegetale",
+					"Chimie des biomolecules dorigine vegetale",
 					"Chimie des biomolecules de synthese"
 				],
 
@@ -194,7 +194,7 @@
 					"Les grandes classes des reactions organiques",
 					"Chimie descriptive II et chimie de coordination",
 					"Chimie organique heterocyclique",
-					"Chimie organométallique et catalyse"
+					"Chimie organometallique et catalyse"
 				]
 			}
 		},
@@ -239,8 +239,47 @@
 				"Ecologie Generale II",
 				"Immunologie",
 				"Genetique",
-				"Biologie moleculaire"
-			]
+				"Biologie Moleculaire"
+			],
+			"S6": {
+				"options": [
+					"Biologie Appliquee Aux Production Vegetales",
+					"Physiologie Animal",
+					"Biologie Appliquee a la Gestion de l'Environnement",
+					"Biologie  de Conservation",
+					"Eco-sante et Environnement"
+				],
+				"BiologieAppliqueeAuxProductionVegetale": [
+					"Sol et Fertilisation et Pratiques Culturales",
+					"Phytopathologie et Methodes de Lutte",
+					"biodiversite et Metabolisme secondaire des plantes",
+					"Biotechnologie et amelioration des plantes"
+				],
+				"PhysiologieAnimal": [
+					"Neuroanatomie et Organes des sens",
+					"Endocrinologie",
+					"Ethologie et psychophysiologie",
+					"Pharmacologie et mecanismes dinteractions"
+				],
+				"BiologieAppliqueealaGestiondEnvironnement": [
+					"Changements globaux et impacts sur les Socio-ecosystemes",
+					"Outils de management de l'environnement",
+					"Microbiologie environnementale",
+					"Diagnostic ecologique et techniques d'analyse"
+				],
+				"BiologiedeConservationetGestiondesPopulationExploitees": [
+					"Changements globaux et impacts sur les Socio-ecosystemes",
+					"Outils de management de l'environnement",
+					"Biologie de la Conservation",
+					"Gestion Halieutique ET Cynegetique"
+				],
+				"EcosanteetEnvironnement": [
+					"Changements globaux et impacts sur les ecosystemes",
+					"Outils de management de l'environnement",
+					"traitement et valorisation des dechets",
+					"Eco-epidemiologie et Parasitologie"
+				]
+			}
 		},
 		"STU": {
 			"S1": [
@@ -284,7 +323,25 @@
 				"Hydrogeologie",
 				"Geophysique",
 				"Geochimie"
-			]
+			],
+			"S6": {
+				"options": [
+					"Bassins Sedimentaire et Georessources",
+					"Geologie Appliquee"
+				],
+				"BassinsSedimentaireetGeoressources": [
+					"Bassins sedimentaires",
+					"Series sedimentaires et exploration petroliere",
+					"Geologie De La Matiere Organique ET des Phosphates",
+					"Geologie des hydrocarbures - systemes petroliers"
+				],
+				"GeologieAppliquee": [
+					"Metallogenie typologique",
+					"Cycle de lexploration minerale",
+					"Ecoulements et crues dans les bassins versants",
+					"Hydrogeologie et Hydrochimie"
+				]
+			}
 		},
 
 		"SMI": {
@@ -310,7 +367,7 @@
 				"electronique",
 				"Technologie du web",
 				"Probabilites- Statistique",
-				"Systeme d'exploitation 1",
+				"Systeme dexploitation 1",
 				"Algorithmique 2",
 				"Programmation 1"
 			],
@@ -318,17 +375,23 @@
 				"Electromagnetisme",
 				"Architecture des ordinateurs",
 				"Analyse Numerique",
-				"Systeme d'exploitation 2",
+				"Systeme dexploitation 2",
 				"Structures de donnees",
 				"Programmation 2"
 			],
 			"S5": [
 				"Programmation orientee Java",
-				"Systeme d'information",
+				"Systeme dinformation",
 				"Compilation",
 				"Base de donnees",
 				"Recherche operationnelle",
 				"Reseaux"
+			],
+			"S6": [
+				"Intelligence Artificielle",
+				"Conception Orientee object(UML)",
+				"Programmation web",
+				"Base de donnees 2"
 			]
 		},
 		"SMA": {
@@ -373,6 +436,14 @@
 				"Programmation Mathematique",
 				"Analyse numerique 2",
 				"Informatique 5"
+			],
+			"S6": [
+				"Calcule Differentiel",
+				"Integration 2",
+				"Toplogie 2",
+				"Algebre 7",
+				"Probabilites",
+				"Equations Defferentielles et applications"
 			]
 		}
 	}

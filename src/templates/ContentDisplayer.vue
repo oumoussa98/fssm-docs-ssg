@@ -230,10 +230,10 @@ export default {
 
 	created() {
 		this.succeed = dataGetter.succeed;
-	},
-	mounted() {
 		dataGetter.getAllData(this.smodules, this.path, this.slugs);
 		this.data = dataGetter.data;
+	},
+	mounted() {
 		this.screenWidth = window.innerWidth;
 		window.addEventListener("resize", () => {
 			this.screenWidth = window.innerWidth;

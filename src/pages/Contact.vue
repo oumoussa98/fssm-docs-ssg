@@ -131,7 +131,7 @@ export default {
 		},
 		Submited() {
 			Object.keys(this.formData).forEach((k) => delete this.formData[k]);
-			this.reset();
+			this.$refs.form.reset();
 			this.successMessage = true;
 		},
 		encode(data) {

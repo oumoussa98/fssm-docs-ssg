@@ -28,7 +28,7 @@
 					></v-select>
 					<v-select
 						v-if="
-							level === 'Licence Fondamental' && semestre === 'S6'
+							level === 'Licence Fondamental' && s6Options.length
 						"
 						v-model="option"
 						:items="s6Options"
@@ -243,15 +243,25 @@ export default {
 			) {
 				switch (this.semestre) {
 					case "S6":
-						this.s6Options =
+						if (
 							json.lfmodules[this.filiere][this.semestre][
 								"options"
-							];
-						if (this.option) {
-							this.lfModules =
+							]
+						) {
+							this.s6Options =
 								json.lfmodules[this.filiere][this.semestre][
-									this.option
+									"options"
 								];
+							if (this.option) {
+								this.lfModules =
+									json.lfmodules[this.filiere][this.semestre][
+										this.option.split(" ").join("")
+									];
+							}
+						} else {
+							this.s6Options.length = 0;
+							this.lfModules =
+								json.lfmodules[this.filiere][this.semestre];
 						}
 						break;
 					case "S1":
@@ -259,6 +269,7 @@ export default {
 					case "S3":
 					case "S4":
 					case "S5":
+						this.s6Options.length = 0;
 						this.lfModules =
 							json.lfmodules[this.filiere][this.semestre];
 						break;

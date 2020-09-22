@@ -62,7 +62,7 @@ export default {
 	methods: {
 		append(item) {
 			if (this.i === 2) {
-				this.option = item.replaceAll(" ", "-");
+				this.option = item.split(" ").join("-");
 				this.$router.push({
 					path: `Licence-Fondamental/${this.filiere}/${
 						this.semestre

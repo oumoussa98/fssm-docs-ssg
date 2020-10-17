@@ -31,7 +31,7 @@ export default {
 			"chimie_organometallique_et_catalyse",
 		],
 		path:
-			"/Licence Fondamental/S6/SMP/Heterocycle et Organometallique-Catalyse",
+			"/Licence Fondamental/S6/SMC/Heterocycle et Organometallique-Catalyse",
 	}),
 };
 </script>

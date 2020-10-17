@@ -29,7 +29,7 @@ export default {
 			"gestion_de_la _qualite_et_accreditation",
 			"metrologie",
 		],
-		path: "/Licence Fondamental/S6/SMP/Chimie Biomoleculaire",
+		path: "/Licence Fondamental/S6/SMC/Chimie Biomoleculaire",
 	}),
 };
 </script>

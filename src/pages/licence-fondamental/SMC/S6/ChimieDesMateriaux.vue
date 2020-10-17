@@ -29,7 +29,7 @@ export default {
 			"chimie_de_solide",
 			"proprietes_optiques_et_magnetiques",
 		],
-		path: "/Licence Fondamental/S6/SMP/Chimie des Materiaux",
+		path: "/Licence Fondamental/S6/SMC/Chimie des Materiaux",
 	}),
 };
 </script>

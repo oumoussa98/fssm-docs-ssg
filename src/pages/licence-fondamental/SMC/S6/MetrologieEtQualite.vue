@@ -29,7 +29,7 @@ export default {
 			"chimie_des_biomolecules_origine_vegetale",
 			"chimie_des_biomolecules_de_synthese",
 		],
-		path: "/Licence Fondamental/S6/SMP/Metrologie et Qualite",
+		path: "/Licence Fondamental/S6/SMC/Metrologie et Qualite",
 	}),
 };
 </script>

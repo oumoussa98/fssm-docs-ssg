@@ -28,7 +28,7 @@ export default {
 			"determination_structurale_et_stereochimique",
 			"methodes_analyse_et_de_caracterisation",
 		],
-		path: "/Licence Fondamental/S6/SMP/Spectroscopie",
+		path: "/Licence Fondamental/S6/SMC/Spectroscopie",
 	}),
 };
 </script>

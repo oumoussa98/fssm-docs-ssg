@@ -28,7 +28,7 @@ export default {
 			"metallurgie_extractive",
 			"electrochimie_appliquee",
 		],
-		path: "/Licence Fondamental/S6/SMP/Metallurgie",
+		path: "/Licence Fondamental/S6/SMC/Metallurgie",
 	}),
 };
 </script>
